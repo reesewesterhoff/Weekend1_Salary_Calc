@@ -15,12 +15,12 @@ $(document).ready(onReady);
 
 function onReady(){
     console.log('JQ');
-    $('#addEmployeeButton').on('click', addEmployee)
-    
+    $('#addEmployeeButton').on('click', addEmployee);
+    $('#employeeTable').on('click', '#deleteButton', deleteEmployee);
 }
 
-let salaryArray = [];
-const reducer = accumulator + 
+let totalExpenses = 0;
+
 
 function addEmployee(){
     console.log('add employee click is working');
@@ -36,13 +36,24 @@ function addEmployee(){
             <td>` + lastName + `</td>
             <td>` + id + `</td>
             <td>` + title + `</td>
-            <td id="salaryInput">` + annualSalary + `</td>
+            <td>` + annualSalary + `</td>
+            <td><button id="deleteButton">Delete</button></td>
         </tr>
     `)
 
     $('input').val('');
 
-    salaryArray.push((Number(annualSalary)));
-    console.log(salaryArray);
-    
+    totalExpenses+=Number(annualSalary);
+
+    $('#totalMonthlyExpenses').empty().append('<h3>Total Monthly: $ ' + totalExpenses.toFixed(2) + '</h3>');
+
+    if(totalExpenses > 20000){
+        $('#totalMonthlyExpenses').css('background-color', 'red');
+    }
+
+}
+
+function deleteEmployee(){
+    console.log('delete button working');
+    $(this).closest('tr').remove();
 }
