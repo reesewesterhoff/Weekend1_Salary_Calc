@@ -10,11 +10,3 @@ table {
 h1 {
     text-align: center;
 }
-
-#inputDiv {
-    width: 80%;
-}
-
-#addEmployeeButton {
-    align: right;
-}
