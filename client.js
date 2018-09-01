@@ -2,15 +2,17 @@ console.log('js');
 
 $(document).ready(onReady);
 
-// class Employee {
-//     constructor(firstName, lastName, id, title, annualSalary) {
-//         this.firstName = firstName;
-//         this.lastName = lastName;
-//         this.id = id;
-//         this.title = title;
-//         this.annualSalary = annualSalary;
-//     }
-// }
+class Employee {
+    constructor(firstName, lastName, id, title, annualSalary) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.id = id;
+        this.title = title;
+        this.annualSalary = annualSalary;
+    }
+}
+
+let employeeArray = [];
 
 
 function onReady(){
@@ -18,6 +20,18 @@ function onReady(){
     $('#addEmployeeButton').on('click', addEmployee);
     $('#employeeTable').on('click', '#deleteButton', deleteEmployee);
 }
+
+// function pushEmployeeObjectToArray(employee){
+//     const employee = employeeArray[i];
+//     let employeeStoreToArray = new Employee(
+//         employee.firstName,
+//         employee.lastName,
+//         employee.id,
+//         employee.title,
+//         annualSalary.annualSalary
+//     )
+
+//     employeeArray.push(employeeStoreToArray);
 
 let totalExpenses = 0;
 
@@ -29,6 +43,16 @@ function addEmployee(){
     let id = $('#ID').val();
     let title = $('#title').val();
     let annualSalary = $('#annualSalary').val();
+
+    let employeeStoreToArray = new Employee(
+        firstName,
+        lastName,
+        id,
+        title,
+        annualSalary
+    )
+
+    employeeArray.push(employeeStoreToArray);
 
     $('#employeeTable').append(`
         <tr>
@@ -45,11 +69,14 @@ function addEmployee(){
 
     totalExpenses+=Number(annualSalary);
 
-    $('#totalMonthlyExpenses').empty().append('<h3>Total Monthly: $ ' + totalExpenses.toFixed(2)/12 + '</h3>');
+    $('#totalMonthlyExpenses').empty().append(
+    '<h3>Total Monthly: $ ' + totalExpenses.toFixed(2)/12 + '</h3>');
 
     if(totalExpenses/12 > 20000){
         $('#totalMonthlyExpenses').css('background-color', 'red');
     }
+
+    console.log(employeeArray);
 
 }
 
@@ -57,3 +84,5 @@ function deleteEmployee(){
     console.log('delete button working');
     $(this).closest('tr').remove();
 }
+
+
