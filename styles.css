@@ -29,5 +29,5 @@ h1, h3, th, td, input, button {
 
 #totalMonthlyExpenses {
     text-align: right;
-    padding: 30px;
+    margin: 30px;
 }

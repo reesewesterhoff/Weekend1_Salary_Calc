@@ -45,9 +45,9 @@ function addEmployee(){
 
     totalExpenses+=Number(annualSalary);
 
-    $('#totalMonthlyExpenses').empty().append('<h3>Total Monthly: $ ' + totalExpenses.toFixed(2) + '</h3>');
+    $('#totalMonthlyExpenses').empty().append('<h3>Total Monthly: $ ' + totalExpenses.toFixed(2)/12 + '</h3>');
 
-    if(totalExpenses > 20000){
+    if(totalExpenses/12 > 20000){
         $('#totalMonthlyExpenses').css('background-color', 'red');
     }
 
