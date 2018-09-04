@@ -21,18 +21,6 @@ function onReady(){
     $('#employeeTable').on('click', '#deleteButton', deleteEmployee);
 }
 
-// function pushEmployeeObjectToArray(employee){
-//     const employee = employeeArray[i];
-//     let employeeStoreToArray = new Employee(
-//         employee.firstName,
-//         employee.lastName,
-//         employee.id,
-//         employee.title,
-//         annualSalary.annualSalary
-//     )
-
-//     employeeArray.push(employeeStoreToArray);
-
 let totalExpenses = 0;
 
 
