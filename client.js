@@ -1,4 +1,3 @@
-console.log('js');
 
 $(document).ready(onReady);
 
@@ -15,23 +14,22 @@ class Employee {
 let employeeArray = [];
 
 
-function onReady(){
-    console.log('JQ');
+function onReady() {
     $('#addEmployeeButton').on('click', addEmployee);
     $('#employeeTable').on('click', '#deleteButton', deleteEmployee);
 }
 
 let totalExpenses = 0;
 
-
-function addEmployee(){
-    console.log('add employee click is working');
+// add new employee to table
+function addEmployee() {
     let firstName = $('#firstName').val();
     let lastName = $('#lastName').val();
     let id = $('#ID').val();
     let title = $('#title').val();
     let annualSalary = $('#annualSalary').val();
 
+    // create new employee with values from inputs
     let employeeStoreToArray = new Employee(
         firstName,
         lastName,
@@ -39,9 +37,10 @@ function addEmployee(){
         title,
         annualSalary
     )
-
+    // push employee to array
     employeeArray.push(employeeStoreToArray);
 
+    // update DOM with employee information
     $('#employeeTable').append(`
         <tr>
             <td>` + firstName + `</td>
@@ -52,24 +51,21 @@ function addEmployee(){
             <td><button id="deleteButton">Delete</button></td>
         </tr>
     `)
-
+    // clear inputs
     $('input').val('');
 
-    totalExpenses+=Number(annualSalary);
-
+    totalExpenses += Number(annualSalary);
+    // update DOM with total monthly expenses
     $('#totalMonthlyExpenses').empty().append(
-    '<h3>Total Monthly: $ ' + totalExpenses.toFixed(2)/12 + '</h3>');
+        '<h3>Total Monthly: $ ' + totalExpenses.toFixed(2) / 12 + '</h3>');
 
-    if(totalExpenses/12 > 20000){
+    if (totalExpenses / 12 > 20000) {
         $('#totalMonthlyExpenses').css('background-color', 'red');
     }
 
-    console.log(employeeArray);
-
 }
-
-function deleteEmployee(){
-    console.log('delete button working');
+// delete employee from table
+function deleteEmployee() {
     $(this).closest('tr').remove();
 }
 
